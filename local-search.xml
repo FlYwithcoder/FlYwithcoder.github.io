@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>标志寄存器</title>
+    <link href="/2023/09/25/%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8/"/>
+    <url>/2023/09/25/%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="EFLAGS寄存器"><a href="#EFLAGS寄存器" class="headerlink" title="EFLAGS寄存器"></a>EFLAGS寄存器</h2><p><img src="/../images/image-20230926161935873.png" alt="image-20230926161935873"></p><h3 id="标志寄存器"><a href="#标志寄存器" class="headerlink" title="标志寄存器"></a>标志寄存器</h3><p>1、进位标志CF(Carry Flag):如果运算结果的最高位产生了一个进位或借位，那么，其值为1，否则其值为0。</p><p>2、奇偶标志PF(Parity Flag)：奇偶标志PF用于反映运算结果中“1”的个数的奇偶性。如果“1”的个数为偶数，则PF的值为1，否则其值为0。</p><p>3、辅助进位标志AF(Auxiliary Carry Flag)：</p><p>在发生下列情况时，辅助进位标志AF的值被置为1，否则其值为0：</p><p>(1)、在字操作时，发生低字节向高字节进位或借位时；</p><p>(2)、在字节操作时，发生低4位向高4位进位或借位时。</p><p>4、零标志ZF(Zero Flag)：零标志ZF用来反映运算结果是否为0。</p><p>如果运算结果为0，则其值为1，否则其值为0。在判断运算结果是否为0时，可使用此标志位。</p><p>5、符号标志SF(Sign Flag)：符号标志SF用来反映运算结果的符号位，它与运算结果的最高位相同。</p><p>6、溢出标志OF(Overflow Flag)：溢出标志OF用于反映有符号数加减运算所得结果是否溢出。</p><p>如果运算结果超过当前运算位数所能表示的范围，则称为溢出，OF的值被置为1，否则，OF的值被清为0。</p><p>注：最高位进位与溢出的区别：</p><p>​进位标志表示无符号数运算结果是否超出范围.</p><p>​溢出标志表示有符号数运算结果是否超出范围.</p><p>​溢出主要是给有符号运算使用的，在有符号的运算中，有如下的规律：</p><p>​正 + 正 &#x3D; 正 如果结果是负数，则说明有溢出</p><p>​负 + 负 &#x3D; 负 如果结果是正数，则说明有溢出</p><p>​正 + 负 永远都不会有溢出.</p><p><img src="/../images/image-20230926162007713.png" alt="image-20230926162007713"></p><h2 id="其他指令"><a href="#其他指令" class="headerlink" title="其他指令"></a>其他指令</h2><h3 id="ADC指令：带进位加法"><a href="#ADC指令：带进位加法" class="headerlink" title="ADC指令：带进位加法"></a>ADC指令：带进位加法</h3><p>​格式：ADC  R&#x2F;M,R&#x2F;M&#x2F;IMM   两边不能同时为内存  宽度要一样</p><h3 id="SBB指令：带借位减法"><a href="#SBB指令：带借位减法" class="headerlink" title="SBB指令：带借位减法"></a>SBB指令：带借位减法</h3><p>​格式：SBB  R&#x2F;M,R&#x2F;M   两边不能同时为内存  宽度要一样</p><h3 id="XCHG指令：交换数据"><a href="#XCHG指令：交换数据" class="headerlink" title="XCHG指令：交换数据"></a>XCHG指令：交换数据</h3><p>​格式：XCHG  R&#x2F;M,R&#x2F;M&#x2F;IMM   两边不能同时为内存  宽度要一样</p><h3 id="MOVS指令：移动数据-内存-内存"><a href="#MOVS指令：移动数据-内存-内存" class="headerlink" title="MOVS指令：移动数据  内存-内存"></a>MOVS指令：移动数据  内存-内存</h3><p>​BYTE&#x2F;WORD&#x2F;DWORD</p><p>​MOVS BYTE PTR ES:[EDI],BYTE PTR DS:[ESI]简写为：MOVSB</p><p>​MOVS WORD PTR ES:[EDI],BYTE PTR DS:[ESI]简写为：MOVSW</p><p>​MOVS DWORD PTR ES:[EDI],BYTE PTR DS:[ESI]简写为：MOVSD</p><h3 id="STOS指令：将AL-AX-EAX的值存储到-EDI-指定的内存单元"><a href="#STOS指令：将AL-AX-EAX的值存储到-EDI-指定的内存单元" class="headerlink" title="STOS指令：将AL&#x2F;AX&#x2F;EAX的值存储到[EDI]指定的内存单元"></a>STOS指令：将AL&#x2F;AX&#x2F;EAX的值存储到[EDI]指定的内存单元</h3><p>​STOS BYTE PTR ES:[EDI]简写为STOSB</p><p>​STOS WORD PTR ES:[EDI]简写为STOSW</p><p>​STOS DWORD PTR ES:[EDI]简写为STOSD</p><h3 id="REP指令：按计数寄存器-ECX-中指定的次数重复执行字符串指令"><a href="#REP指令：按计数寄存器-ECX-中指定的次数重复执行字符串指令" class="headerlink" title="REP指令：按计数寄存器 (ECX) 中指定的次数重复执行字符串指令"></a>REP指令：按计数寄存器 (ECX) 中指定的次数重复执行字符串指令</h3>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>EFLAGS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
