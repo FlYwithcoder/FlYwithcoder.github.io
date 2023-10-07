@@ -1,0 +1,809 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="指针1、”带*类型“ 的特征探测：宽度 2、”带*类型“ 的特征探测：声明 3、”带*类型“ 的特征探测：赋值 4、”带*类型“ 的特征探测：++、– 5、”带*类型“ 的特征探测：加上&#x2F;减去 一个整数 6、”带*类型“ 的特征探测：求差值 7、”带*类型“ 的特征探测：比较 笔记 1、带有*的变量类型的标准写法：变量类型 *  变量名； ​	如int*  a 2、任何类型都可以带*，加">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/10/07/%E6%8C%87%E9%92%88/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="指针1、”带*类型“ 的特征探测：宽度 2、”带*类型“ 的特征探测：声明 3、”带*类型“ 的特征探测：赋值 4、”带*类型“ 的特征探测：++、– 5、”带*类型“ 的特征探测：加上&#x2F;减去 一个整数 6、”带*类型“ 的特征探测：求差值 7、”带*类型“ 的特征探测：比较 笔记 1、带有*的变量类型的标准写法：变量类型 *  变量名； ​	如int*  a 2、任何类型都可以带*，加">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308211916792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NDQxNDI3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://example.com/2023/10/07/%E6%8C%87%E9%92%88/Users/HF/AppData/Roaming/Typora/typora-user-images/image-20230911213230999.png">
+<meta property="article:published_time" content="2023-10-07T05:52:02.102Z">
+<meta property="article:modified_time" content="2023-10-06T14:35:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210308211916792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NDQxNDI3,size_16,color_FFFFFF,t_70">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-07 13:52" pubdate>
+          October 7, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          93 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>1、”带*类型“ 的特征探测：宽度</p>
+<p>2、”带*类型“ 的特征探测：声明</p>
+<p>3、”带*类型“ 的特征探测：赋值</p>
+<p>4、”带*类型“ 的特征探测：++、–</p>
+<p>5、”带*类型“ 的特征探测：加上&#x2F;减去 一个整数</p>
+<p>6、”带*类型“ 的特征探测：求差值</p>
+<p>7、”带*类型“ 的特征探测：比较</p>
+<p><strong>笔记</strong></p>
+<p>1、带有*的变量类型的标准写法：变量类型 *  变量名；</p>
+<p>​	如int*  a</p>
+<p>2、任何类型都可以带*，加上 *以后是新的类型；</p>
+<p>3、*可以是任意多个。</p>
+<p>4、带*类型的变量赋值时只能使用”完整写法”；</p>
+<p>5、带*类型的变量宽度永远是4字节(本机尺寸)，无论类型是什么，无论有几个 *；</p>
+<p>6、带*类型的变量可以加、减去一个整数，但不能乘或者除；</p>
+<p>7、带*类型变量与其他整数相加或者相减时；</p>
+<p>​	带<em>类型变量 + N &#x3D; 带</em>类型变量 + N*(去掉一个 * 后类型的宽度)</p>
+<p>​	带<em>类型变量  - N &#x3D; 带</em>类型变量 - N*(去掉一个 * 后类型的宽度)</p>
+<p>8、两个类型相同的带*类型的变量可以进行减法操作；</p>
+<p>9、相减的结果要除以去掉一个*的数据的宽度；</p>
+<p>10、带*的变量，如果类型相同，可以进行大小比较；</p>
+<p>注：关于本机尺寸：32位机器的本机尺寸位4B; 64位机器的本机尺寸为8B;</p>
+<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span>* a;<br><span class="hljs-type">short</span>* b;<br><span class="hljs-type">int</span>* c;<br><br>a = (<span class="hljs-type">char</span>*)<span class="hljs-number">1</span>;<br>b = (<span class="hljs-type">short</span>*)<span class="hljs-number">2</span>;<br>c = (<span class="hljs-type">int</span>*)<span class="hljs-number">3</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="、–"><a href="#、–" class="headerlink" title="++、–"></a>++、–</h3><p><strong>++：结果为原有值加上除去一个*后数据宽度；</strong></p>
+<p><strong>– 类似</strong></p>
+<p>如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span>* a;<br><span class="hljs-type">short</span>* b;<br><span class="hljs-type">int</span>* c;<br><br>a = (<span class="hljs-type">char</span>*)<span class="hljs-number">100</span>;<br>b = (<span class="hljs-type">short</span>*)<span class="hljs-number">100</span>;<br>c = (<span class="hljs-type">int</span>*)<span class="hljs-number">100</span>;<br><br>a++;<br>b++;<br>c++;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,a,b,c);<br></code></pre></td></tr></table></figure>
+
+<p>得到结果为：101  102  104</p>
+<p>因为：</p>
+<p>​	char* 去掉一个*为char,而char的数据宽度为1字节；</p>
+<p>​	short* 去掉一个*为short,而short的数据宽度为1字节；</p>
+<p>​	int* 去掉一个*为int,而int的数据宽度为1字节；</p>
+<p>同理：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span>** a;<br><span class="hljs-type">short</span>** b;<br><span class="hljs-type">int</span>** c;<br><br>a = (<span class="hljs-type">char</span>**)<span class="hljs-number">100</span>;<br>b = (<span class="hljs-type">short</span>**)<span class="hljs-number">100</span>;<br>c = (<span class="hljs-type">int</span>**)<span class="hljs-number">100</span>;<br><br>a++;<br>b++;<br>c++;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,a,b,c);<br></code></pre></td></tr></table></figure>
+
+<p>的结果应为  104   104   104</p>
+<h3 id="加上-减去一个整数"><a href="#加上-减去一个整数" class="headerlink" title="加上&#x2F;减去一个整数"></a>加上&#x2F;减去一个整数</h3><p><strong>结果为原有值 加上 除去一个*后数据宽度 与 被加整数 的乘积；</strong></p>
+<p><strong>减法类似</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span>* a;<br><span class="hljs-type">short</span>* b;<br><span class="hljs-type">int</span>* c;<br><br>a = (<span class="hljs-type">char</span>*)<span class="hljs-number">100</span>;<br>b = (<span class="hljs-type">short</span>*)<span class="hljs-number">100</span>;<br>c = (<span class="hljs-type">int</span>*)<span class="hljs-number">100</span>;<br><br>a = a + <span class="hljs-number">5</span>;<br>b = b + <span class="hljs-number">5</span>;<br>c = c + <span class="hljs-number">5</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,a,b,c);<br></code></pre></td></tr></table></figure>
+
+<p>得到结果为：105  110  120</p>
+<p>因为：</p>
+<p>​	char* 去掉一个*为char,而char的数据宽度为1字节，100 + 1 * 5 &#x3D; 105；</p>
+<p>​	short* 去掉一个*为short,而short的数据宽度为2字节，100 + 2 * 5 &#x3D; 110；</p>
+<p>​	int* 去掉一个*为int,而int的数据宽度为4字节，100 + 4 * 5 &#x3D; 120；</p>
+<p>同理：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span>***** a;<br><span class="hljs-type">short</span>***** b;<br><span class="hljs-type">int</span>***** c;<br><br>a = (<span class="hljs-type">char</span>*****)<span class="hljs-number">100</span>;<br>b = (<span class="hljs-type">short</span>*****)<span class="hljs-number">100</span>;<br>c = (<span class="hljs-type">int</span>*****)<span class="hljs-number">100</span>;<br><br>a = a + <span class="hljs-number">5</span>;<br>b = b + <span class="hljs-number">5</span>;<br>c = c + <span class="hljs-number">5</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,a,b,c);<br></code></pre></td></tr></table></figure>
+
+<p>的结果为 120 120 120</p>
+<h3 id="求差值"><a href="#求差值" class="headerlink" title="求差值"></a>求差值</h3><p><strong>两个类型相同的带 * 类型的变量可以进行减法操作；相减的结果要除以 去掉一个*的数据的宽度,结果为int型</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span>* a;<br><span class="hljs-type">char</span>* b;<br><br>a = (<span class="hljs-type">char</span>*)<span class="hljs-number">200</span>;<br>b = (<span class="hljs-type">char</span>*)<span class="hljs-number">100</span>;<br><br><span class="hljs-type">int</span> x = a - b;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,x);<br></code></pre></td></tr></table></figure>
+
+<p>结果为 ：(200-100)&#x2F;1 &#x3D; 100</p>
+<p>同理：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">short</span>* a;<br><span class="hljs-type">short</span>* b;<br><br>a = (<span class="hljs-type">short</span>*)<span class="hljs-number">200</span>;<br>b = (<span class="hljs-type">short</span>*)<span class="hljs-number">100</span>;<br><br><span class="hljs-type">int</span> x = a - b;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,x);<br></code></pre></td></tr></table></figure>
+
+<p>的结果为（200-100）&#x2F; 2 &#x3D; 50；</p>
+<h3 id="作比较"><a href="#作比较" class="headerlink" title="作比较"></a>作比较</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span>***** a;<br><span class="hljs-type">char</span>***** b;<br><br><br>a = (<span class="hljs-type">char</span>*****)<span class="hljs-number">200</span>;<br>b = (<span class="hljs-type">char</span>*****)<span class="hljs-number">100</span>;<br><br><span class="hljs-keyword">if</span>(a &gt; b)&#123;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1&quot;</span>);<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;2&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>结果为：1</p>
+<h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs awk">自定义结构体如下：<br>struct Student<br>&#123;<br>    int x;<br>    int y;<br>&#125;; <span class="hljs-regexp">//</span><span class="hljs-number">8</span>B<br><br>第一步：<br>Student**** s;		<span class="hljs-regexp">//</span><span class="hljs-number">4</span>B（本机尺寸）<br>s = (Student****)<span class="hljs-number">100</span>;<br>s++; <span class="hljs-regexp">//</span>s的值是多少？<br>s = s+<span class="hljs-number">2</span>; <span class="hljs-regexp">//</span>s的值是多少？<br>s = s-<span class="hljs-number">3</span>; <span class="hljs-regexp">//</span>s的值是多少？<br>解：<br>s++	= <span class="hljs-number">100</span> + <span class="hljs-number">4</span> = <span class="hljs-number">104</span><br>s+<span class="hljs-number">2</span>	= <span class="hljs-number">100</span> + <span class="hljs-number">2</span>*<span class="hljs-number">4</span> = <span class="hljs-number">108</span><br>s-<span class="hljs-number">3</span>	= <span class="hljs-number">100</span> - <span class="hljs-number">3</span>*<span class="hljs-number">4</span> = <span class="hljs-number">88</span><br><br>第二步：<br>Student**** s1;		<span class="hljs-regexp">//</span><span class="hljs-number">4</span>B<br>Student**** s2;		<span class="hljs-regexp">//</span><span class="hljs-number">4</span>B<br>int x;	<span class="hljs-regexp">//</span><span class="hljs-number">4</span>B<br>s1 = (Student****)<span class="hljs-number">200</span>;<br>s2 = (Student****)<span class="hljs-number">100</span>;<br>x = s1-s2; <span class="hljs-regexp">//</span>x的值是多少？<br>解：<br>x = (<span class="hljs-number">200</span>-<span class="hljs-number">100</span>)/<span class="hljs-number">4</span> = <span class="hljs-number">25</span><br><br>第三步：<br>Student* s;	<br>s = (Student*)<span class="hljs-number">100</span>;<br>s++; 		<span class="hljs-regexp">//</span>s的值是多少？<br>s = s+<span class="hljs-number">2</span>; 		<span class="hljs-regexp">//</span>s的值是多少？<br>s = s-<span class="hljs-number">3</span>; 		<span class="hljs-regexp">//</span>s的值是多少？<br>解：<br>s++	= <span class="hljs-number">100</span> + <span class="hljs-number">8</span> = <span class="hljs-number">108</span><br>s+<span class="hljs-number">2</span>	= <span class="hljs-number">100</span> + <span class="hljs-number">2</span>*<span class="hljs-number">8</span> = <span class="hljs-number">116</span><br>s-<span class="hljs-number">3</span>	= <span class="hljs-number">100</span> - <span class="hljs-number">3</span>*<span class="hljs-number">8</span> = <span class="hljs-number">76</span><br><br>第四步：<br>Student* s1;<br>Student* s2;<br>int x;<br>s1 = (Student*)<span class="hljs-number">200</span>;<br>s2 = (Student*)<span class="hljs-number">100</span>;<br>x = s1-s2; <span class="hljs-regexp">//</span>x的值是多少？<br>解：<br>x = int ((<span class="hljs-number">200</span>-<span class="hljs-number">100</span>)/<span class="hljs-number">8</span>) = int(<span class="hljs-number">12.5</span>) = <span class="hljs-number">12</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="符号"><a href="#符号" class="headerlink" title="&amp;符号"></a>&amp;符号</h3><p><strong>&amp;是地址符，任何一个变量都可以用&amp;来获取地址，比如&amp;a可以获取到a的地址，其类型为原类型加上</strong>*</p>
+<p>如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span> a;<br><span class="hljs-type">short</span> b;<br><br>则 &amp;a就是a的类型加一颗’*’，即就是<span class="hljs-type">char</span>*；<br>   &amp;b的类型`<span class="hljs-type">short</span>*`<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>如果在一个变量前用‘*’，比如</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span>* x   *x == <span class="hljs-type">int</span>;<br></code></pre></td></tr></table></figure>
+
+<p><strong>得到的结果就是原来类型砍一颗星(与&amp;相反)</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span>* px1 = (<span class="hljs-type">int</span>*)<span class="hljs-number">10</span>;<br><span class="hljs-type">int</span>** px2 = (<span class="hljs-type">int</span>**)<span class="hljs-number">11</span>;<br><span class="hljs-type">int</span>*** px3 = (<span class="hljs-type">int</span>***)<span class="hljs-number">12</span>;<br><span class="hljs-type">int</span>**** px4 = (<span class="hljs-type">int</span>****)<span class="hljs-number">13</span>;<br><br><span class="hljs-comment">//*(px1)是什么类型？</span><br><span class="hljs-type">int</span><br><span class="hljs-comment">//*(px2)是什么类型？</span><br><span class="hljs-type">int</span>*<br><span class="hljs-comment">//*(px3)是什么类型？</span><br><span class="hljs-type">int</span>**<br><span class="hljs-comment">//*(px4)是什么类型？</span><br><span class="hljs-type">int</span>***<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-comment">//mov	dword ptr [ebp-4],0Ah</span><br><br><span class="hljs-type">int</span>* px = &amp;x;<br>        <span class="hljs-comment">/*  lea	eax,[ebp-4]</span><br><span class="hljs-comment">			mov	dword ptr [ebp-8],eax	*/</span><br><br><span class="hljs-type">int</span> x1 = *px;<br>        <span class="hljs-comment">/*  mov	ecx,[ebp-8]			先将地址为px内的值传给ecx</span><br><span class="hljs-comment">        	mov	edx,dword ptr [ecx]		再将地址为ecx 的值传给 edx</span><br><span class="hljs-comment">			mov	dword ptr [ebp-0Ch],edx		最后将edx的值传给x1*/</span><br>首先定义的变量 x，并赋值为<span class="hljs-number">10</span>；<br>然后定义 <span class="hljs-type">int</span>* 型变量 px，并把变量x的地址赋值给px;<br>再定义一个 变量 x1，将地址为px内的值赋值给x1；<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="作业：-调试相关：在vc-6-0中，F5是调试（运行到第一个断点处）；ctrl-F5是执行；F7是编译；F9是下断点；F10是单步步过；F11是单步步入"><a href="#作业：-调试相关：在vc-6-0中，F5是调试（运行到第一个断点处）；ctrl-F5是执行；F7是编译；F9是下断点；F10是单步步过；F11是单步步入" class="headerlink" title="作业：[调试相关：在vc++6.0中，F5是调试（运行到第一个断点处）；ctrl+F5是执行；F7是编译；F9是下断点；F10是单步步过；F11是单步步入]"></a><strong>作业：</strong>[调试相关：在vc++6.0中，F5是调试（运行到第一个断点处）；ctrl+F5是执行；F7是编译；F9是下断点；F10是单步步过；F11是单步步入]</h4><p>1、<strong>列出每一行的反汇编代码</strong></p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>pa</th>
+<th>pb</th>
+<th>pc</th>
+<th>ppa</th>
+<th>ppb</th>
+<th>ppc</th>
+</tr>
+</thead>
+</table>
+<p>​          ebp-4		 ebp-8	 ebp-0ch	        ebp-10h		    ebp-14h		  ebp-18h			    ebp-1ch		             ebp-20h	        ebp-24h</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs C">	<span class="hljs-type">char</span> a = <span class="hljs-number">10</span>;		<span class="hljs-comment">//mov	byte ptr [ebp-4],0Ah</span><br><span class="hljs-comment">//[ebp-4]存的是局部变量a</span><br>    <span class="hljs-type">char</span>* pa = &amp;a;		<span class="hljs-comment">/*lea	eax,[ebp-4]</span><br><span class="hljs-comment">                          mov	dword ptr [ebp-10h],eax  */</span><br><span class="hljs-comment">//[ebp-10h]存的是局部变量pa</span><br>	<span class="hljs-type">char</span>** ppa = &amp;pa;	<span class="hljs-comment">/*lea   eax,[ebp-10h]</span><br><span class="hljs-comment">						  mov   dword ptr [ebp-1Ch],eax */</span><br><span class="hljs-comment">//[ebp-1Ch]存的是局部变量ppa</span><br><br>	<span class="hljs-type">short</span> b = <span class="hljs-number">20</span>;		<span class="hljs-comment">//mov   word ptr [ebp-8],offset test+20h (00401040)</span><br>	<span class="hljs-type">int</span> c = <span class="hljs-number">30</span>;			<span class="hljs-comment">//mov   dword ptr [ebp-0Ch],1Eh</span><br><br>	<span class="hljs-type">short</span>* pb = &amp;b;		<span class="hljs-comment">/*lea	ecx,[ebp-8]</span><br><span class="hljs-comment">						  mov	dword ptr [ebp-14h],ecx */</span><br>	<span class="hljs-type">int</span>* pc = &amp;c;		<span class="hljs-comment">/*lea   edx,[ebp-0Ch]</span><br><span class="hljs-comment">						  mov   dword ptr [ebp-18h],edx */</span><br><br>	<span class="hljs-type">char</span>** ppa = &amp;pa;	<span class="hljs-comment">/*lea   eax,[ebp-10h]</span><br><span class="hljs-comment">						  mov   dword ptr [ebp-1Ch],eax */</span><br><span class="hljs-comment">//[ebp-1Ch]存的是局部变量ppa</span><br><br>	<span class="hljs-type">short</span>** ppb = &amp;pb;	<span class="hljs-comment">/*lea   ecx,[ebp-14h]</span><br><span class="hljs-comment">						  mov   dword ptr [ebp-20h],ecx */</span><br>	<span class="hljs-type">int</span>** ppc = &amp;pc;	<span class="hljs-comment">/*lea   edx,[ebp-18h]</span><br><span class="hljs-comment">						  mov   dword ptr [ebp-24h],edx */</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>2、列出每一行的反汇编代码</strong></p>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>p7</th>
+<th>p6</th>
+<th>p5</th>
+<th>p4</th>
+<th>p3</th>
+<th>p2</th>
+<th>p1</th>
+</tr>
+</thead>
+</table>
+<p>​                   ebp-4                  ebp-8               ebp-0ch              ebp-10h	         ebp-14h               ebp-18h               ebp-1ch             ebp-20h	                                                                                                     </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> p = <span class="hljs-number">10</span>;		<span class="hljs-comment">//mov	dword ptr [ebp-4],0Ah</span><br><span class="hljs-type">int</span>******* p7;<br><span class="hljs-type">int</span>****** p6;<br><span class="hljs-type">int</span>***** p5;<br><span class="hljs-type">int</span>**** p4;<br><span class="hljs-type">int</span>*** p3;<br><span class="hljs-type">int</span>** p2;<br><span class="hljs-type">int</span>* p1;<br><br>p1 = &amp;p;	<span class="hljs-comment">/*lea eax,[ebp-4]</span><br><span class="hljs-comment">			  mov dword ptr [ebp-20h],eax */</span><br><br>p2 = &amp;p1;	<span class="hljs-comment">/*lea eax,[ebp-20h]</span><br><span class="hljs-comment">			  mov dword ptr [ebp-1ch],ecx */</span><br><br>p3 = &amp;p2;	<span class="hljs-comment">/*lea eax,[ebp-1ch]</span><br><span class="hljs-comment">			  mov dword ptr [ebp-18h],edx */</span><br><br>p4 = &amp;p3;	<span class="hljs-comment">/*lea eax,[ebp-18h]</span><br><span class="hljs-comment">			  mov dword ptr [ebp-14h],eax */</span><br><br>p5 = &amp;p4;	<span class="hljs-comment">/*lea eax,[ebp-14h]</span><br><span class="hljs-comment">			  mov dword ptr [ebp-10h],ecx */</span><br><br>p6 = &amp;p5;	<span class="hljs-comment">/*lea eax,[ebp-10h]</span><br><span class="hljs-comment">			  mov dword ptr [ebp-0ch],edx */</span><br><br>p7 = &amp;p6;	<span class="hljs-comment">/*lea eax,[ebp-0ch]</span><br><span class="hljs-comment">			  mov dword ptr [ebp-8],eax */</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="”带-类型“-的特征探测，求值"><a href="#”带-类型“-的特征探测，求值" class="headerlink" title="”带*类型“ 的特征探测，求值"></a>”带*类型“ 的特征探测，求值</h3><h3 id="指针操作数组"><a href="#指针操作数组" class="headerlink" title="指针操作数组"></a>指针操作数组</h3><p>1、&amp;arr[0]代表取数组中第一个元素的地址，可以省略为数组名</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">char</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-comment">//用char* x = &amp;arr[0]; == char* px = arr;</span><br>    <span class="hljs-type">char</span>* px = arr;<span class="hljs-comment">//px存的就是第一个整数的地址</span><br>   <br>    <span class="hljs-comment">//常规打印数组</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;	<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,arr[i]);<br>    &#125;<br>    <br>    <span class="hljs-comment">//用指针打印数组</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;	<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,*(px+i));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">short</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-type">short</span>* px = arr;<br><br>    <span class="hljs-comment">//用指针打印数组</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;	<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,*(px+i));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-number">4</span>、完成代码，实现数组值的互换<br>    <span class="hljs-type">void</span> <span class="hljs-title function_">Function</span><span class="hljs-params">()</span>&#123;<br>    	<span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];<br>    	<span class="hljs-comment">//此处添加代码，使用指针，将数组的值倒置</span><br>    	<span class="hljs-type">int</span>* px = arr;<br>    	<span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">2</span>;i++)&#123;<br>            temp = *(px+i);<br>            *(px+i) = *(px+(<span class="hljs-number">4</span>-i))<br>            *(px+(<span class="hljs-number">4</span>-i)) = temp;<br>        &#125;<br>    	<span class="hljs-comment">//打印数组值的代码已经写完，不需要修改</span><br>    	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k = <span class="hljs-number">0</span>;k &lt; <span class="hljs-number">5</span>;k++)&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,*(px+k));<br>        &#125;<br>	&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="模拟CE实现搜索"><a href="#模拟CE实现搜索" class="headerlink" title="模拟CE实现搜索"></a>模拟CE实现搜索</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">	1、数组作为参数；</span><br><span class="hljs-comment">	2、通过char指针遍历</span><br><span class="hljs-comment">	3、通过short指针遍历数据</span><br><span class="hljs-comment">	4、通过int指针遍历数据</span><br><span class="hljs-comment">	模拟CE实现搜索功能：</span><br><span class="hljs-comment">		这一堆数据中存储了角色的血值信息，假设血值的类型为int类型</span><br><span class="hljs-comment">		值为100(10进制)，请列出所有可能的值以及该值对应的地址</span><br><span class="hljs-comment">		0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x07,0x09,</span><br><span class="hljs-comment">		0x00,0x20,0x10,0x03,0x03,0x0C,0xO0,0x41,0x00,0x00,</span><br><span class="hljs-comment">		0x00,0x01,0x00,0x00,0x00,0x05,0x00,0x00,0x00,0x0A,</span><br><span class="hljs-comment">		0x00,0x00,0x02,0x74,0x64,0x41,0x00,0x06,0x08,0x00,</span><br><span class="hljs-comment">		0x00,0x00,0x64,0x00,0x64,0x00,0xOF,0x00,0x00,0xOD,</span><br><span class="hljs-comment">		0x00,0x00,0x00,0x23,0x00,0x00,0x0E,0x00,0x00,0x00,</span><br><span class="hljs-comment">		0x00,0x00,0x00,0x23,0x00,0x00,0x04,0x00,0x00,0x00,</span><br><span class="hljs-comment">		0x00,0x00,0x00,0x23,0x00,0x00,0x04,0x00,0x00,0x00,</span><br><span class="hljs-comment">		0x00,0x00,0x00,0x23,0x00,0x00,0x04,0x00,0x00,0x00,</span><br><span class="hljs-comment">		0x00,0x00,0x00,0x23,0x00,0x64,0x05,0x00,0x64,0x00,</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">char</span> data[] =<br>&#123;<br>	<span class="hljs-number">0x00</span>,<span class="hljs-number">0x64</span>,<span class="hljs-number">0x02</span>,<span class="hljs-number">0x03</span>,<span class="hljs-number">0x64</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x07</span>,<span class="hljs-number">0x64</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x03</span>,<span class="hljs-number">0x03</span>,<span class="hljs-number">0x0C</span>,<br>	<span class="hljs-number">0x07</span>,<span class="hljs-number">0x41</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x01</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x05</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x0A</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<br>	<span class="hljs-number">0x02</span>,<span class="hljs-number">0x74</span>,<span class="hljs-number">0x64</span>,<span class="hljs-number">0x41</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x06</span>,<span class="hljs-number">0x08</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x64</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x64</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x05</span>,<span class="hljs-number">0x00</span>,<br>	<span class="hljs-number">0x00</span>,<span class="hljs-number">0x0D</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x23</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x0E</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x23</span>,<br>	<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x04</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x23</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x04</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<br>	<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x23</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x04</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x23</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x64</span>,<br>	<span class="hljs-number">0x05</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x64</span>,<span class="hljs-number">0x00</span>,<br>&#125;;<br><span class="hljs-type">void</span> <span class="hljs-title function_">FindBloodAddr</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	通过char指针遍历</span><br><span class="hljs-comment">		printf(&quot;%x\n&quot;, &amp;data[0]);		//&amp;data[0]	等价于 data</span><br><span class="hljs-comment">		char* p = data;	</span><br><span class="hljs-comment">		for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="hljs-comment">			if (*(p + i) == 0x64) &#123;</span><br><span class="hljs-comment">				printf(&quot;%x\n&quot;,p+i);</span><br><span class="hljs-comment">			&#125;</span><br><span class="hljs-comment">		&#125;</span><br><span class="hljs-comment">	*/</span><br>	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	通过short指针遍历</span><br><span class="hljs-comment">	printf(&quot;%x\n&quot;, &amp;data[0]);		//&amp;data[0]	等价于 data</span><br><span class="hljs-comment">	short* p = (short*)data;</span><br><span class="hljs-comment">	for (int i = 0; i &lt; 50; i++) &#123;  //printf(&quot;%x\n&quot;,*(p+i));打印出来是两个字节数据</span><br><span class="hljs-comment">		</span><br><span class="hljs-comment">			if (*(p + i) == 0x64) &#123;		//64 00 00 00</span><br><span class="hljs-comment">				printf(&quot;%x\n&quot;, p + i);		//p+i 等价于 &amp;(*(p + i)) 			</span><br><span class="hljs-comment">		&#125;</span><br><span class="hljs-comment">	&#125;</span><br><span class="hljs-comment">	*/</span><br><br>	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	通过int指针遍历</span><br><span class="hljs-comment">	printf(&quot;%x\n&quot;, &amp;data[0]);		//&amp;data[0]	等价于 data</span><br><span class="hljs-comment">	char* p = data;</span><br><span class="hljs-comment">	for (int i = 0; i &lt; 97; i++) &#123;</span><br><span class="hljs-comment">		if (*(p+i) == 0x64 &amp;&amp; *(p+i+1) == 0x0 &amp;&amp; *(p+i+2) == 0x0 &amp;&amp; *(p+i+3) == 0x0) &#123;</span><br><span class="hljs-comment">			printf(&quot;%x\n&quot;, p+i);</span><br><span class="hljs-comment">		&#125;</span><br><span class="hljs-comment">	&#125;</span><br><span class="hljs-comment">	*/</span><br>	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	思路：通过双指针，模拟CE实现搜索功能</span><br><span class="hljs-comment">	pt指针用于遍历，pr指针取当下pt所指位置的int单元，取pr所指的值与0x64进行比较</span><br><span class="hljs-comment">	*/</span><br>	<span class="hljs-type">char</span>* pt;<br>	<span class="hljs-type">int</span>* pr;<br>	<span class="hljs-type">int</span> n = <span class="hljs-keyword">sizeof</span>(data);<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">4</span>; i++) &#123;<br>		pt = (data + i);<br>		pr = (<span class="hljs-type">int</span>*)pt;<br>		<span class="hljs-keyword">if</span> (*pr == <span class="hljs-number">0x64</span>) &#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;[%x ]=%d\n&quot;</span>, pr, *pr);<br>		&#125;<br>	&#125;<br><br>&#125;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>	FindBloodAddr();	<br>&#125;<br><span class="hljs-comment">//参考：https://www.cnblogs.com/ybit/p/15217003.html#%E6%96%B9%E6%A1%88%E4%BA%8C</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串指针"><a href="#字符串指针" class="headerlink" title="字符串指针"></a>字符串指针</h2><p><strong>exe的内存分布：</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20210308211916792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NDQxNDI3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span>* x = <span class="hljs-string">&#x27;china&#x27;</span>;<br><span class="hljs-type">char</span> y[] = <span class="hljs-string">&#x27;china&#x27;</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span><br>&#123;<br>    *(x+<span class="hljs-number">1</span>)=<span class="hljs-string">&#x27;A&#x27;</span>;  <br>    y[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;A&#x27;</span>;<br>&#125;<br>第一种使用字符串指针，x指向的是字符串的首地址；<br>第二种使用数组；<br>在test()中，修改字符串内容，发现第一种不可行，会报错内存非法读写。第二种可以：<br>    原因：<br>    第一种定义的是全局变量，可读不可写；<br>    第二种使用数组方式，首先会将字符串copy一下，因此可以修改<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="复制语句作为判断语句"><a href="#复制语句作为判断语句" class="headerlink" title="复制语句作为判断语句"></a>复制语句作为判断语句</h2><p>赋值语句作为判断条件是什么意思呢？它并<strong>不是</strong>以是否赋值成功作为<code>true</code>和<code>false</code>的判断机制，而是看<strong>赋值的值是多少</strong>，如果为<code>0</code>自动就作为<code>false</code>了</p>
+<p>如：while ((*dest++) &#x3D; (*src++));</p>
+<p>当src指向结束符，跳出循环；</p>
+<h2 id="搜索字符串"><a href="#搜索字符串" class="headerlink" title="搜索字符串"></a>搜索字符串</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-comment">/*</span><br><span class="hljs-comment">	1、int strlen(char* s)</span><br><span class="hljs-comment">	返回值是字符串s的长度，不包括结束符‘/0’。</span><br><span class="hljs-comment">	2、char* strcpy(char* dest,char* src);</span><br><span class="hljs-comment">	复制字符串src到dest中，返回指针为dest的值。</span><br><span class="hljs-comment">	3、char* strcat(char* dest,char* src);</span><br><span class="hljs-comment">	将字符串src添加到dest尾部，返回指针为dest的值。</span><br><span class="hljs-comment">	4、int strcmp(char* s1,char* s2);</span><br><span class="hljs-comment">	一样的返回0，不一样返回1；</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">strlen</span><span class="hljs-params">(<span class="hljs-type">char</span>* s)</span> &#123;<span class="hljs-comment">//返回值是字符串s的长度，不包括结束符‘/0’。</span><br>	<span class="hljs-type">int</span> ret = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span> (*s != <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;<br>		ret++;<br>		s++;<br>	&#125;<br>	<span class="hljs-keyword">return</span> ret;<br>&#125;<br><br><span class="hljs-type">char</span>* <span class="hljs-title function_">strcpy</span><span class="hljs-params">(<span class="hljs-type">char</span>* dest, <span class="hljs-type">char</span>* src)</span> &#123;<span class="hljs-comment">//复制字符串src到dest中，返回指针为dest的值。</span><br>	<span class="hljs-type">char</span>* ret = dest;<br>	<span class="hljs-keyword">while</span> (*src != <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;<br>		*dest++ = *src++;<br>	&#125;<br>	<span class="hljs-keyword">return</span> ret;<br>&#125;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">	最简写法：</span><br><span class="hljs-comment">char* strcpy(char* dest, char* src) &#123;</span><br><span class="hljs-comment">	char* ret = dest;</span><br><span class="hljs-comment">	while ((*dest++) = (*src++));</span><br><span class="hljs-comment">	return ret;</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-type">char</span>* <span class="hljs-title function_">strcat</span><span class="hljs-params">(<span class="hljs-type">char</span>* dest, <span class="hljs-type">char</span>* src)</span> &#123;<span class="hljs-comment">//将字符串src添加到dest尾部，返回指针为dest的值。</span><br>	<span class="hljs-comment">//思路:先找到字符串dest尾部；然后再拼接</span><br>	<span class="hljs-type">char</span>* ret = dest;<br>	<span class="hljs-keyword">while</span> (*dest != <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;	<span class="hljs-comment">//找到目的字符串尾部</span><br>		dest++;<br>	&#125;<br>	<span class="hljs-comment">//注：不能写成while(*dest++ != &#x27;0\&#x27;),这种写法当指向结束符时指针会向后移动，因此不会覆盖结束符</span><br>	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	while (*src != &#x27;\0&#x27;) &#123;</span><br><span class="hljs-comment">		*dest = *src;</span><br><span class="hljs-comment">		dest++;</span><br><span class="hljs-comment">		src++;</span><br><span class="hljs-comment">	&#125;</span><br><span class="hljs-comment">	*/</span><br>	<span class="hljs-keyword">while</span> ((*dest++) = (*src++));<br>	<span class="hljs-keyword">return</span> ret;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">strcmp</span><span class="hljs-params">(<span class="hljs-type">char</span>* s1, <span class="hljs-type">char</span>* s2)</span> &#123; <span class="hljs-comment">//一样的返回0，不一样返回1；</span><br>	<span class="hljs-keyword">while</span> (*s1++ == *s2++) &#123;<br>		<span class="hljs-keyword">if</span> (*s1 == <span class="hljs-string">&#x27;\0&#x27;</span> &amp;&amp; *s2 == <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-type">char</span> arr1[] = <span class="hljs-string">&quot;china&quot;</span>;<br>	<span class="hljs-type">char</span> arr2[] = <span class="hljs-string">&quot;chinab&quot;</span>;<br>	<span class="hljs-comment">//strlen(arr);</span><br>	<span class="hljs-comment">//strcpy(arr1,arr2);</span><br>	<span class="hljs-comment">//printf(&quot;%s\n&quot;, strcpy(arr1, arr2));</span><br>	<span class="hljs-comment">//strcat(arr1, arr2);</span><br>	<span class="hljs-comment">//printf(&quot;%s&quot;,strcat(arr1, arr2));</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(arr1, arr2)) &#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;True&quot;</span>);<br>	&#125;<br>	<span class="hljs-keyword">else</span> &#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;False&quot;</span>);<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><p>模拟实现CE的数据搜索功能：</p>
+<p>这一堆数据中存储了角色的名字信息(WOW)，请列出角色名的内存地址.</p>
+<p>0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x07,0x09,</p>
+<p>0x00,0x20,0x10,0x03,0x03,0x0C,0x00,0x00,0x44,0x00,</p>
+<p>0x00,0x33,0x00,0x47,0x0C,0x0E,0x00,0x0D,0x00,0x11,</p>
+<p>0x00,0x00,0x00,0x02,0x64,0x00,0x00,0x00,0xAA,0x00,</p>
+<p>0x00,0x00,0x64,0x10,0x00,0x00,0x00,0x00,0x00,0x00,</p>
+<p>0x00,0x00,0x02,0x00,0x74,0x0F,0x41,0x00,0x00,0x00,</p>
+<p>0x01,0x00,0x00,0x00,0x05,0x00,0x00,0x00,0x0A,0x00,</p>
+<p>0x00,0x02,0x57,0x4F,0x57,0x00,0x06,0x08,0x00,0x00,</p>
+<p>0x00,0x00,0x00,0x64,0x00,0x0F,0x00,0x00,0x0D,0x00,</p>
+<p>0x00,0x00,0x23,0x00,0x00,0x64,0x00,0x00,0x64,0x00</p>
+<h2 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h2><p>1、创建一个int* arr[5] 数组，并为数组赋值(使用&amp;).</p>
+<p>2、创建一个字符指针数组，存储所有的C的关键词(查资料找)，并全部打印出来.</p>
+<p>3、查找这些数据中，有几个id&#x3D;1 level&#x3D;8的结构体信息。</p>
+<p>0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x07,0x09,0x00,0x20,0x10,0x03,0x03,0x0C,</p>
+<p>0x00,0x00,0x44,0x00,0x00,0x33,0x01,0x00,0x00,0x08,0x00,0x00,0x00,0x00,0x00,0x00,</p>
+<p>0x00,0x02,0x64,0x00,0x00,0x00,0xAA,0x00,0x00,0x00,0x64,<strong>0x01,0x00,0x00,0x00,0x08,</strong></p>
+<p><strong>0x00,0x00,</strong> <strong>0x00</strong>,0x00,0x02,0x00,0x74,0x0F,0x41,0x00,0x00,0x00, 0x01,0x00,0x00,0x00,</p>
+<p>0x05,0x00,0x00,0x00,0x0A,0x00,0x00,0x02,0x57,0x4F,0x57,0x00,0x06,0x08,0x00,0x00,  </p>
+<p>0x00,0x00,0x00,0x64,0x00,0x0F,0x00,0x00,0x0D,0x00, 0x00,0x00,0x23,0x00,0x00,0x64,</p>
+<p>0x00,0x00,0x64,0x00  </p>
+<p>结构体定义如下：</p>
+<p>typedef struct TagPlayer </p>
+<p>{ </p>
+<p>​		int id;</p>
+<p>​		int level;</p>
+<p>}Player;</p>
+<h2 id="结构体指针"><a href="#结构体指针" class="headerlink" title="结构体指针"></a>结构体指针</h2><p><img src="/2023/10/07/%E6%8C%87%E9%92%88/Users/HF\AppData\Roaming\Typora\typora-user-images\image-20230911213230999.png" srcset="/img/loading.gif" lazyload alt="image-20230911213230999"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46441427/article/details/114444224">https://blog.csdn.net/qq_46441427/article/details/114444224</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2023/10/07/指针/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 7, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/07/%E5%A4%B4%E6%96%87%E4%BB%B6/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/07/%E8%A3%B8%E5%87%BD%E6%95%B0&amp;%E5%86%85%E8%81%94%E6%B1%87%E7%BC%96/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
