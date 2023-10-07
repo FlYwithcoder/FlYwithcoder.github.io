@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://example.com/images/image-20230926161935873.png">
 <meta property="og:image" content="http://example.com/images/image-20230926162007713.png">
 <meta property="article:published_time" content="2023-09-25T05:02:49.000Z">
-<meta property="article:modified_time" content="2023-09-26T08:20:14.551Z">
+<meta property="article:modified_time" content="2023-10-07T12:05:12.736Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="EFLAGS">
 <meta name="twitter:card" content="summary_large_image">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k words
+          1.7k words
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          10 mins
+          15 mins
         
       </span>
     
@@ -307,7 +307,14 @@
 <h3 id="STOS指令：将AL-AX-EAX的值存储到-EDI-指定的内存单元"><a href="#STOS指令：将AL-AX-EAX的值存储到-EDI-指定的内存单元" class="headerlink" title="STOS指令：将AL&#x2F;AX&#x2F;EAX的值存储到[EDI]指定的内存单元"></a>STOS指令：将AL&#x2F;AX&#x2F;EAX的值存储到[EDI]指定的内存单元</h3><p>​	STOS BYTE PTR ES:[EDI]	简写为STOSB</p>
 <p>​	STOS WORD PTR ES:[EDI]	简写为STOSW</p>
 <p>​	STOS DWORD PTR ES:[EDI]	简写为STOSD</p>
-<h3 id="REP指令：按计数寄存器-ECX-中指定的次数重复执行字符串指令"><a href="#REP指令：按计数寄存器-ECX-中指定的次数重复执行字符串指令" class="headerlink" title="REP指令：按计数寄存器 (ECX) 中指定的次数重复执行字符串指令"></a>REP指令：按计数寄存器 (ECX) 中指定的次数重复执行字符串指令</h3>
+<h3 id="REP指令：按计数寄存器-ECX-中指定的次数重复执行字符串指令"><a href="#REP指令：按计数寄存器-ECX-中指定的次数重复执行字符串指令" class="headerlink" title="REP指令：按计数寄存器 (ECX) 中指定的次数重复执行字符串指令"></a>REP指令：按计数寄存器 (ECX) 中指定的次数重复执行字符串指令</h3><h1 id="JCC"><a href="#JCC" class="headerlink" title="JCC"></a>JCC</h1><p>J：jump </p>
+<p>E：equal</p>
+<p>Z：zero</p>
+<p>N：not</p>
+<p>O：overflow</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-number">1</span>、	JE, JZ       		结果为零则跳转(相等时跳转)						ZF=<span class="hljs-number">1</span><br>																	<br><span class="hljs-number">2</span>、	JNE, JNZ        		结果不为零则跳转(不相等时跳转)  						ZF=<span class="hljs-number">0</span><br>																	<br><span class="hljs-number">3</span>、	JS 		结果为负则跳转						SF=<span class="hljs-number">1</span><br>																<br><span class="hljs-number">4</span>、	JNS 		结果为非负则跳转						SF=<span class="hljs-number">0</span><br>																	<br><span class="hljs-number">5</span>、	JP, JPE   		结果中<span class="hljs-number">1</span>的个数为偶数则跳转						PF=<span class="hljs-number">1</span><br>																	<br><span class="hljs-number">6</span>、	JNP, JPO   		结果中<span class="hljs-number">1</span>的个数为偶数则跳转						PF=<span class="hljs-number">0</span><br>																	<br><span class="hljs-number">7</span>、	JO    		结果溢出了则跳转						OF=<span class="hljs-number">1</span><br>																	<br><span class="hljs-number">8</span>、	JNO    		结果没有溢出则跳转						OF=<span class="hljs-number">0</span><br>																<br><span class="hljs-number">9</span>、	JB, JNAE   		小于则跳转 (无符号数)						CF=<span class="hljs-number">1</span><br>																	<br><span class="hljs-number">10</span>、	JNB, JAE    		大于等于则跳转 (无符号数)						CF=<span class="hljs-number">0</span><br>																	<br><span class="hljs-number">11</span>、	JBE, JNA    		小于等于则跳转 (无符号数)						CF=<span class="hljs-number">1</span> or ZF=<span class="hljs-number">1</span>							<br>									<br><span class="hljs-number">12</span>、	JNBE, JA    		大于则跳转(无符号数)						CF=<span class="hljs-number">0</span> and ZF=<span class="hljs-number">0</span><br>																	<br><span class="hljs-number">13</span>、	JL, JNGE    		小于则跳转 (有符号数)						SF≠ OF<br>																	<br><span class="hljs-number">14</span>、	JNL, JGE    		大于等于则跳转 (有符号数)						SF=OF<br>																	<br><span class="hljs-number">15</span>、	JLE, JNG    		小于等于则跳转 (有符号数)						ZF=<span class="hljs-number">1</span> or SF≠ OF<br>																	<br><span class="hljs-number">16</span>、	JNLE, JG    		大于则跳转(有符号数)						ZF=<span class="hljs-number">0</span> and SF=OF<br><br>有符号无符号的区别：		<br>		<br>CMP AL,CL		<br>JG <span class="hljs-number">0x12345678</span>		<br>JA <span class="hljs-number">0x12345678</span>		<br></code></pre></td></tr></table></figure>
+
+
                 
               </div>
             
@@ -376,9 +383,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/07/%E8%BF%9B%E5%88%B6%E7%9B%B8%E5%85%B3(C)/" title="进制相关(C)">
+                      <a href="/2023/10/07/%E5%A4%B4%E6%96%87%E4%BB%B6&amp;C_misc/" title="头文件&amp;C_misc">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">进制相关(C)</span>
+                        <span class="hidden-mobile">头文件&amp;C_misc</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
