@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-10-11T08:50:21.192Z</updated>
+  <updated>2023-10-11T11:46:04.117Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>结构体对齐</title>
+    <link href="http://example.com/2023/10/11/%E7%BB%93%E6%9E%84%E4%BD%93%E5%AF%B9%E9%BD%90/"/>
+    <id>http://example.com/2023/10/11/%E7%BB%93%E6%9E%84%E4%BD%93%E5%AF%B9%E9%BD%90/</id>
+    <published>2023-10-11T11:24:10.000Z</published>
+    <updated>2023-10-11T11:46:04.117Z</updated>
+    
+    <content type="html"><![CDATA[<p>32位机器尺寸为4字节（32&#x2F;8）</p><p>64位机器尺寸为8字节（64&#x2F;8）</p><h1 id="一、结构体对齐"><a href="#一、结构体对齐" class="headerlink" title="一、结构体对齐"></a>一、结构体对齐</h1><p>1、结构体大小是多少？</p><p>struct Test<br>{<br>    char  a;&#x2F;&#x2F;1<br>    int b ; &#x2F;&#x2F;4<br>};</p><table><thead><tr><th>a</th><th></th><th></th><th></th></tr></thead><tbody><tr><td>b</td><td>b</td><td>b</td><td>b</td></tr></tbody></table><p>故结果为8</p><p>2、结构体大小是多少？</p><p>struct Test<br>{<br>    int a ;&#x2F;&#x2F;4<br>    __int64 b ;&#x2F;&#x2F;8<br>    char c ;&#x2F;&#x2F;1<br>};</p><table><thead><tr><th>a</th><th>a</th><th>a</th><th>a</th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td></tr><tr><td>c</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><p>故结果为24</p><p>3、结构体大小是多少？</p><p>struct Test<br>{<br>    int a ;&#x2F;&#x2F;4<br>    __int64 b ;&#x2F;&#x2F;8<br>    char c ;&#x2F;&#x2F;1<br>    char d ;&#x2F;&#x2F;1<br>};</p><table><thead><tr><th>a</th><th>a</th><th>a</th><th>a</th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td></tr><tr><td>c</td><td>d</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><p>故结果为24</p><p>4、结构体大小是多少？</p><p>struct Test<br>{</p><p>​char c ;&#x2F;&#x2F;1<br>​    int a ;&#x2F;&#x2F;4<br>​    __int64 b ;&#x2F;&#x2F;8<br>​    char d ;&#x2F;&#x2F;1<br>};</p><table><thead><tr><th>c</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td>a</td><td>a</td><td>a</td><td>a</td><td></td><td></td><td></td><td></td></tr><tr><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td></tr><tr><td>d</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><p>故结果为32</p><h1 id="二、为什么要有数据对齐？"><a href="#二、为什么要有数据对齐？" class="headerlink" title="二、为什么要有数据对齐？"></a>二、为什么要有数据对齐？</h1><p>本质：效率还是空间，二选一的结果.</p><h1 id="三、面包还是牛奶？这是个问题。。。选择空间还是选择效率！"><a href="#三、面包还是牛奶？这是个问题。。。选择空间还是选择效率！" class="headerlink" title="三、面包还是牛奶？这是个问题。。。选择空间还是选择效率！"></a>三、面包还是牛奶？这是个问题。。。选择空间还是选择效率！</h1><h2 id="pragma-pack的基本用法为："><a href="#pragma-pack的基本用法为：" class="headerlink" title="#pragma pack的基本用法为："></a>#pragma pack的基本用法为：</h2><p>#pragma pack( n )<br>结构体。。。<br>#pragma pack(  )</p><p>对齐参数：n为字节对齐数，其取值为1、2、4、8，默认是8。</p><p>如果这个值比结构体成员的sizeof值小，那么该成员的偏移量应该以此值为准，<br>即是说，结构体成员的偏移量应该取二者的最小值.</p><p>#pragma pack(8)<br>struct Test<br>{<br>     int a ;<br>     __int64 b ;<br>     char c ;<br>};<br>#pragma pack()</p><p><img src="/../images/image-20231011194046167.png" alt="image-20231011194046167"></p><h1 id="四、VC6默认的结构对齐大小"><a href="#四、VC6默认的结构对齐大小" class="headerlink" title="四、VC6默认的结构对齐大小"></a>四、VC6默认的结构对齐大小</h1><p>项目右键–&gt;setting–&gt;C&#x2F;C++–&gt;Code Generation</p><p>如果这个值比结构体成员的sizeof值小，那么该成员的偏移量应该以此值为准，<br>即是说，结构体成员的偏移量应该取二者的最小值，</p><h1 id="对齐原则："><a href="#对齐原则：" class="headerlink" title="对齐原则："></a>对齐原则：</h1><p><strong>原则一：</strong>数据成员对齐规则：结构的数据成员，第一个数据成员放在offset为0的地方，以后每个数据成员存储的起始位置要从<br>该成员大小的整数倍开始(比如int在32位机为４字节，则要从4的整数倍地址开始存储).</p><p><strong>原则二：</strong>结构体的总大小，也就是sizeof的结果，必须是其内部最大成员的整数倍，不足的要补齐。</p><p><strong>原则三：</strong>如果一个结构里有某些结构体成员，则结构体成员要从其内部最大元素大小的整数倍地址开始存储。<br>(struct a里存有struct b，b里有char，int，double等元素，那b应该从8的整数倍开始存储.)</p><p><strong>原则四：</strong>对齐参数如果比结构体成员的sizeof值小，该成员的偏移量应该以此值为准.<br>    也就是说，结构体成员的偏移量应该取二者的最小值.</p><h1 id="5、建议："><a href="#5、建议：" class="headerlink" title="5、建议："></a>5、建议：</h1><p>按照数据类型由小到大的顺序进行书写</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;32位机器尺寸为4字节（32&amp;#x2F;8）&lt;/p&gt;
+&lt;p&gt;64位机器尺寸为8字节（64&amp;#x2F;8）&lt;/p&gt;
+&lt;h1 id=&quot;一、结构体对齐&quot;&gt;&lt;a href=&quot;#一、结构体对齐&quot; class=&quot;headerlink&quot; title=&quot;一、结构体对齐&quot;&gt;&lt;/a&gt;一、结构体</summary>
+      
+    
+    
+    
+    
+    <category term="C语言" scheme="http://example.com/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
   
   <entry>
     <title>C语言反汇编</title>
