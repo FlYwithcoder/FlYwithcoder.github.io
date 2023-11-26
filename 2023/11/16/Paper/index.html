@@ -16,24 +16,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="32位机器尺寸为4字节（32&#x2F;8） 64位机器尺寸为8字节（64&#x2F;8） 一、结构体对齐1、结构体大小是多少？ struct Test	{	    char  a;	&#x2F;&#x2F;1    int b ;	 &#x2F;&#x2F;4};	    a       b b b b   故结果为8 2、结构体大小是多少？ struct Test	{	    int a ;">
+    <meta name="description" content="四种执行追踪（以前叫实体分析）：[36]J. Caballero, H. Yin, Z. Liang, and D. Song, “Polyglot: Automatic extraction of protocol message format using dynamic binary analysis,” in Proc. 14th ACM Conf. Comput. Commun. Secu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="结构体对齐">
-<meta property="og:url" content="http://example.com/2023/10/11/%E7%BB%93%E6%9E%84%E4%BD%93%E5%AF%B9%E9%BD%90/index.html">
+<meta property="og:title" content="Paper">
+<meta property="og:url" content="http://example.com/2023/11/16/Paper/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="32位机器尺寸为4字节（32&#x2F;8） 64位机器尺寸为8字节（64&#x2F;8） 一、结构体对齐1、结构体大小是多少？ struct Test	{	    char  a;	&#x2F;&#x2F;1    int b ;	 &#x2F;&#x2F;4};	    a       b b b b   故结果为8 2、结构体大小是多少？ struct Test	{	    int a ;">
+<meta property="og:description" content="四种执行追踪（以前叫实体分析）：[36]J. Caballero, H. Yin, Z. Liang, and D. Song, “Polyglot: Automatic extraction of protocol message format using dynamic binary analysis,” in Proc. 14th ACM Conf. Comput. Commun. Secu">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/image-20231011194046167.png">
-<meta property="article:published_time" content="2023-10-11T11:24:10.000Z">
-<meta property="article:modified_time" content="2023-10-11T11:46:04.117Z">
+<meta property="article:published_time" content="2023-11-16T07:44:06.000Z">
+<meta property="article:modified_time" content="2023-11-22T13:13:12.601Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="Paper">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/image-20231011194046167.png">
   
   
   
-  <title>结构体对齐 - Hexo</title>
+  <title>Paper - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="结构体对齐"></span>
+            <span id="subtitle" data-typed-text="Paper"></span>
           
         </div>
 
@@ -211,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-11 19:24" pubdate>
-          October 11, 2023 pm
+        <time datetime="2023-11-16 15:44" pubdate>
+          November 16, 2023 pm
         </time>
       </span>
     
@@ -223,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k words
+          6k words
         
       </span>
     
@@ -234,7 +232,7 @@
         
         
         
-          11 mins
+          51 mins
         
       </span>
     
@@ -271,167 +269,62 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">结构体对齐</h1>
+            <h1 id="seo-header">Paper</h1>
             
             
               <div class="markdown-body">
                 
-                <p>32位机器尺寸为4字节（32&#x2F;8）</p>
-<p>64位机器尺寸为8字节（64&#x2F;8）</p>
-<h1 id="一、结构体对齐"><a href="#一、结构体对齐" class="headerlink" title="一、结构体对齐"></a>一、结构体对齐</h1><p>1、结构体大小是多少？</p>
-<p>struct Test	<br>{	<br>    char  a;	&#x2F;&#x2F;1<br>    int b ;	 &#x2F;&#x2F;4<br>};	</p>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-</tr>
-</tbody></table>
-<p>故结果为8</p>
-<p>2、结构体大小是多少？</p>
-<p>struct Test	<br>{	<br>    int a ;		&#x2F;&#x2F;4<br>    __int64 b ;	&#x2F;&#x2F;8<br>    char c ;	&#x2F;&#x2F;1<br>};	</p>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>a</th>
-<th>a</th>
-<th>a</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-</tr>
-<tr>
-<td>c</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>故结果为24</p>
-<p>3、结构体大小是多少？</p>
-<p>struct Test				<br>{				<br>    int a ;			&#x2F;&#x2F;4	<br>    __int64 b ;		&#x2F;&#x2F;8		<br>    char c ;				&#x2F;&#x2F;1<br>    char d ;				&#x2F;&#x2F;1<br>};				</p>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>a</th>
-<th>a</th>
-<th>a</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-</tr>
-<tr>
-<td>c</td>
-<td>d</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>故结果为24</p>
-<p>4、结构体大小是多少？</p>
-<p>struct Test				<br>{		</p>
-<p>​	char c ;				&#x2F;&#x2F;1		<br>​    int a ;			&#x2F;&#x2F;4	<br>​    __int64 b ;		&#x2F;&#x2F;8		<br>​    char d ;				&#x2F;&#x2F;1<br>};				</p>
-<table>
-<thead>
-<tr>
-<th>c</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>a</td>
-<td>a</td>
-<td>a</td>
-<td>a</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-<td>b</td>
-</tr>
-<tr>
-<td>d</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>故结果为32</p>
-<h1 id="二、为什么要有数据对齐？"><a href="#二、为什么要有数据对齐？" class="headerlink" title="二、为什么要有数据对齐？"></a>二、为什么要有数据对齐？</h1><p>本质：效率还是空间，二选一的结果.			</p>
-<h1 id="三、面包还是牛奶？这是个问题。。。选择空间还是选择效率！"><a href="#三、面包还是牛奶？这是个问题。。。选择空间还是选择效率！" class="headerlink" title="三、面包还是牛奶？这是个问题。。。选择空间还是选择效率！"></a>三、面包还是牛奶？这是个问题。。。选择空间还是选择效率！</h1><h2 id="pragma-pack的基本用法为："><a href="#pragma-pack的基本用法为：" class="headerlink" title="#pragma pack的基本用法为："></a>#pragma pack的基本用法为：</h2><p>#pragma pack( n )	<br>结构体。。。	<br>#pragma pack(  )	</p>
-<p>对齐参数：n为字节对齐数，其取值为1、2、4、8，默认是8。							</p>
-<p>如果这个值比结构体成员的sizeof值小，那么该成员的偏移量应该以此值为准，							<br>即是说，结构体成员的偏移量应该取二者的最小值.							</p>
-<p>#pragma pack(8)				<br>struct Test				<br>{				<br>     int a ;				<br>     __int64 b ;				<br>     char c ;				<br>};				<br>#pragma pack()				</p>
-<p><img src="/../images/image-20231011194046167.png" srcset="/img/loading.gif" lazyload alt="image-20231011194046167"></p>
-<h1 id="四、VC6默认的结构对齐大小"><a href="#四、VC6默认的结构对齐大小" class="headerlink" title="四、VC6默认的结构对齐大小"></a>四、VC6默认的结构对齐大小</h1><p>项目右键–&gt;setting–&gt;C&#x2F;C++–&gt;Code Generation							</p>
-<p>如果这个值比结构体成员的sizeof值小，那么该成员的偏移量应该以此值为准，							<br>即是说，结构体成员的偏移量应该取二者的最小值，							</p>
-<h1 id="对齐原则："><a href="#对齐原则：" class="headerlink" title="对齐原则："></a>对齐原则：</h1><p><strong>原则一：</strong>数据成员对齐规则：结构的数据成员，第一个数据成员放在offset为0的地方，以后每个数据成员存储的起始位置要从												<br>该成员大小的整数倍开始(比如int在32位机为４字节，则要从4的整数倍地址开始存储).												</p>
-<p><strong>原则二：</strong>结构体的总大小，也就是sizeof的结果，必须是其内部最大成员的整数倍，不足的要补齐。												</p>
-<p><strong>原则三：</strong>如果一个结构里有某些结构体成员，则结构体成员要从其内部最大元素大小的整数倍地址开始存储。												<br>(struct a里存有struct b，b里有char，int，double等元素，那b应该从8的整数倍开始存储.)												</p>
-<p><strong>原则四：</strong>对齐参数如果比结构体成员的sizeof值小，该成员的偏移量应该以此值为准.												<br>    也就是说，结构体成员的偏移量应该取二者的最小值.											</p>
-<h1 id="5、建议："><a href="#5、建议：" class="headerlink" title="5、建议："></a>5、建议：</h1><p>按照数据类型由小到大的顺序进行书写				</p>
+                <h1 id="四种执行追踪（以前叫实体分析）："><a href="#四种执行追踪（以前叫实体分析）：" class="headerlink" title="四种执行追踪（以前叫实体分析）："></a>四种执行追踪（以前叫实体分析）：</h1><p>[36]J. Caballero, H. Yin, Z. Liang, and D. Song, “Polyglot: Automatic</p>
+<p>extraction of protocol message format using dynamic binary analysis,”</p>
+<p>in Proc. 14th ACM Conf. Comput. Commun. Security (CCS), 2007,</p>
+<p>pp. 317–329.</p>
+<p>[37] Z. Lin, X. Jiang, D. Xu, and X. Zhang, “Automatic protocol format</p>
+<p>reverse engineering through context- aware monitored execution,” in</p>
+<p>Proc. Netw. Distrib. Syst. Security Symp. (NDSS), San Diego, CA, USA,</p>
+<ol start="2008">
+<li></li>
+</ol>
+<p>[38] P. M. Comparetti, G. Wondracek, C. Kruegel, and E. Kirda, “Prospex:</p>
+<p>Protocol specification extraction,” in Proc. IEEE 30th Symp. Security</p>
+<p>Privacy (SP), Berkeley, CA, USA, 2009, pp. 110–125.</p>
+<p>[39] Z. Wang, X. Jiang, W. Cui, X. Wang, and M. Grace, “ReFormat:</p>
+<p>Automatic reverse engineering of encrypted messages,” in Proc. 14th</p>
+<p>Eur. Symp. Res. Comput. Security (ESORICS), 2009, pp. 200–215.</p>
+<h1 id="既有流量追踪又有执行追踪的综述："><a href="#既有流量追踪又有执行追踪的综述：" class="headerlink" title="既有流量追踪又有执行追踪的综述："></a>既有流量追踪又有执行追踪的综述：</h1><h2 id="流量追踪：执行追踪-11：13"><a href="#流量追踪：执行追踪-11：13" class="headerlink" title="流量追踪：执行追踪 &#x3D; 11：13"></a>流量追踪：执行追踪 &#x3D; 11：13</h2><p>[9] J. Narayan, S. K. Shukla, and T. C. Clancy, “A survey of automatic</p>
+<p>protocol reverse engineering tools,” ACM Comput. Surveys, vol. 48,</p>
+<p>no. 3, Dec. 2015, Art. no. 40.</p>
+<h2 id="流量追踪：执行追踪-9：17"><a href="#流量追踪：执行追踪-9：17" class="headerlink" title="流量追踪：执行追踪 &#x3D;9：17"></a>流量追踪：执行追踪 &#x3D;9：17</h2><p>J. Duchêne, C. L. Guernic, E. Alata, V. Nicomette, and M. Kaâniche,</p>
+<p>“State of the art of network protocol reverse engineering tools,”</p>
+<p>J. Comput. Virol. Hacking Techn., vol. 14, no. 1, pp. 53–68,</p>
+<p>Feb. 2018.</p>
+<h1 id="Application-based-inference"><a href="#Application-based-inference" class="headerlink" title="Application based inference"></a>Application based inference</h1><h2 id="Message-Format"><a href="#Message-Format" class="headerlink" title="Message Format:"></a>Message Format:</h2><h3 id="FFE-x86-2006"><a href="#FFE-x86-2006" class="headerlink" title="FFE&#x2F;x86:2006"></a>FFE&#x2F;x86:2006</h3><p>Lim, J., Reps, T., Liblit, B.: Extracting Output Formats from Executables. In: 13th<br>Working Conference on Reverse Engineering, 2006. WCRE ’06, pp. 167–178. IEEE,<br>Benevento, Italy (2006). DOI 10.1109&#x2F;WCRE.2006.29</p>
+<h3 id="Replayer-2006"><a href="#Replayer-2006" class="headerlink" title="Replayer:2006"></a>Replayer:2006</h3><p>Newsome, J., Brumley, D., Franklin, J., Song, D.: Replayer: automatic protocol replay<br>by binary analysis. In: Proceedings of the 13th ACM conference on Computer and<br>communications security, CCS ’06, pp. 311–321. ACM, New York, NY, USA (2006).<br>DOI 10.1145&#x2F;1180405.1180444</p>
+<h3 id="Polyglot-2007"><a href="#Polyglot-2007" class="headerlink" title="Polyglot:2007"></a>Polyglot:2007</h3><p>Caballero, J., Yin, H., Liang, Z., Song, D.: Polyglot: automatic extraction of protocol<br>message format using dynamic binary analysis. In: Proceedings of the 14th ACM con-<br>ference on Computer and communications security, CCS ’07, pp. 317–329. ACM, New<br>York, NY, USA (2007). DOI 10.1145&#x2F;1315245.1315286</p>
+<h3 id="Rosetta-2007"><a href="#Rosetta-2007" class="headerlink" title="Rosetta:2007"></a>Rosetta:2007</h3><p>Caballero, J., Song, D.: Rosetta: Extracting protocol semantics using binary analysis<br>with applications to protocol replay and NAT rewriting. Technical Report CMU-CyLab-<br>07-014, Carnegie Mellon University, Pittsburgh, USA (2007)</p>
+<h3 id="AutoFormat-2008"><a href="#AutoFormat-2008" class="headerlink" title="AutoFormat:2008"></a>AutoFormat:2008</h3><p>Lin, Z., Jiang, X., Xu, D., Zhang, X.: Automatic Protocol Format Reverse Engineer-<br>ing through Context-Aware Monitored Execution. In: Proceedings of the 15th Annual<br>Network and Distributed System Security Symposium (NDSS). Internet Society, San<br>Diego, USA (2008)</p>
+<h3 id="Tupni-2008"><a href="#Tupni-2008" class="headerlink" title="Tupni:2008"></a>Tupni:2008</h3><p>Cui, W., Peinado, M., Chen, K., Wang, H.J., Irun-Briz, L.: Tupni: automatic reverse<br>engineering of input formats. In: Proceedings of the 15th ACM conference on Computer<br>and communications security, CCS ’08, pp. 391–402. ACM, New York, NY, USA (2008).<br>DOI 10.1145&#x2F;1455770.1455820</p>
+<h3 id="Prospex-2008"><a href="#Prospex-2008" class="headerlink" title="Prospex:2008"></a>Prospex:2008</h3><p>Wondracek, G., Comparetti, P.M., Krgel, C., Kirda, E.: Automatic network protocol<br>analysis. In: Proceedings of the 15th Annual Network and Distributed System Security<br>Symposium (NDSS). Internet Society, San Diego, USA (2008). DOI <a target="_blank" rel="noopener" href="http://www.isoc/">http://www.isoc</a>.<br>org&#x2F;isoc&#x2F;conferences&#x2F;ndss&#x2F;08&#x2F;papers&#x2F;13 automatic network protocol.pdf</p>
+<h3 id="ConfigRE-2008"><a href="#ConfigRE-2008" class="headerlink" title="ConfigRE:2008"></a>ConfigRE:2008</h3><p>Wang, R., Wang, X., Zhang, K., Li, Z.: Towards Automatic Reverse Engineering of<br>Software Security Configurations. In: Proceedings of the 15th ACM Conference on<br>Computer and Communications Security, CCS ’08, pp. 245–256. ACM, Limerick, Ireland<br>(2008). DOI 10.1145&#x2F;1455770.1455802</p>
+<h3 id="ReFormat-2009"><a href="#ReFormat-2009" class="headerlink" title="ReFormat:2009"></a>ReFormat:2009</h3><p>Wang, Z., Jiang, X., Cui, W., Wang, X., Grace, M.: ReFormat: Automatic Reverse<br>Engineering of Encrypted Messages. In: M. Backes, P. Ning (eds.) Computer Security<br>ESORICS 2009, no. 5789 in Lecture Notes in Computer Science, pp. 200–215. Springer<br>Berlin Heidelberg, Saint Malo, France (2009)</p>
+<h3 id="Dispatcher-2009"><a href="#Dispatcher-2009" class="headerlink" title="Dispatcher:2009"></a>Dispatcher:2009</h3><p>Caballero, J., Poosankam, P., Kreibich, C., Song, D.: Dispatcher: enabling active botnet<br>infiltration using automatic protocol reverse-engineering. In: Proceedings of the 16th<br>ACM conference on Computer and communications security, CCS ’09, pp. 621–634.<br>ACM, New York, NY, USA (2009). DOI 10.1145&#x2F;1653662.1653737</p>
+<p>Caballero, J., Song, D.: Automatic protocol reverse-engineering: Message format extrac-<br>tion and field semantics inference. Computer Networks 57(2), 451–474 (2013). DOI<br>10.1016&#x2F;j.comnet.2012.08.003</p>
+<h3 id="Fuzzgrind-2009"><a href="#Fuzzgrind-2009" class="headerlink" title="Fuzzgrind:2009"></a>Fuzzgrind:2009</h3><p>Campana, G.: Fuzzgrind: an automatic fuzzing tool (2009)</p>
+<h3 id="REWARDS-2010"><a href="#REWARDS-2010" class="headerlink" title="REWARDS:2010"></a>REWARDS:2010</h3><p>Lin, Z., Zhang, X., Xu, D.: Automatic Reverse Engineering of Data Structures from<br>Binary Execution. In: Proceedings of the 17th Annual Network and Distributed System<br>Security Symposium (NDSS). Internet Society, San Diego, USA (2010)</p>
+<h3 id="Howard-201"><a href="#Howard-201" class="headerlink" title="Howard:201"></a>Howard:201</h3><p>Slowinska, A., Stancescu, T., Bos, H.: Howard: A Dynamic Excavator for Reverse Engi-<br>neering Data Structures. In: Proceedings of the 18th Annual Network and Distributed<br>System Security Symposium (NDSS). Internet Society, San Diego, USA (2011)</p>
+<h3 id="ARTISTE-2012"><a href="#ARTISTE-2012" class="headerlink" title="ARTISTE:2012"></a>ARTISTE:2012</h3><p>Caballero, J., Grieco, G., Marron, M., Lin, Z., Urbina, D.: ARTISTE: Automatic Gen-<br>eration of Hybrid Data Structure Signatures from Binary Code Executions. Technical<br>Report TR-IMDEA-SW-2012-001, IMDEA Software Institute, Madrid, Spain (2012)</p>
+<h3 id="AFL-2014"><a href="#AFL-2014" class="headerlink" title="AFL:2014"></a>AFL:2014</h3><p>Zalewski, M.: American fuzzy lop. <a target="_blank" rel="noopener" href="http://lcamtuf.coredump.cx/afl/technical">http://lcamtuf.coredump.cx/afl/technical</a>_<br>details.txt</p>
+<h3 id="ARGOS-2015"><a href="#ARGOS-2015" class="headerlink" title="ARGOS:2015"></a>ARGOS:2015</h3><p>Zeng, J., Lin, Z.: Towards Automatic Inference of Kernel Object Semantics from Binary<br>Code. In: 18th International Symposium, RAID 2015, vol. 9404, pp. 538–561. Springer,<br>Kyoto, Japan (2015). DOI 10.1007&#x2F;978-3-319-26362-5</p>
+<h2 id="Protocol-Grammar"><a href="#Protocol-Grammar" class="headerlink" title="Protocol Grammar:"></a>Protocol Grammar:</h2><h3 id="Prospex-2009"><a href="#Prospex-2009" class="headerlink" title="Prospex:2009"></a>Prospex:2009</h3><p>Comparetti, P., Wondracek, G., Kruegel, C., Kirda, E.: Prospex: Protocol Specification<br>Extraction. In: 2009 30th IEEE Symposium on Security and Privacy, pp. 110–125.<br>IEEE, Berkeley, USA (2009). DOI 10.1109&#x2F;SP.2009.14</p>
+<h3 id="MACE-2010"><a href="#MACE-2010" class="headerlink" title="MACE:2010"></a>MACE:2010</h3><p>Cho, C.Y., Babi , D., Shin, E.C.R., Song, D.: Inference and Analysis of Formal Models of<br>Botnet Command and Control Protocols. In: Proceedings of the 17th ACM Conference<br>on Computer and Communications Security, CCS ’10, pp. 426–439. ACM, New York,<br>NY, USA (2010). DOI 10.1145&#x2F;1866307.1866355</p>
+<h3 id="MACE-2011"><a href="#MACE-2011" class="headerlink" title="MACE:2011"></a>MACE:2011</h3><p>Cho, C.Y., Babi, D., Poosankam, P., Chen, K.Z., Wu, E.X., Song, D.: MACE: model-<br>inference-assisted concolic exploration for protocol and vulnerability discovery. In: Pro-<br>ceedings of the 20th USENIX conference on Security, SEC’11, p. 19. USENIX Associa-<br>tion, Berkeley, CA, USA (2011)</p>
+<h2 id="others"><a href="#others" class="headerlink" title="others"></a>others</h2><ol>
+<li>二进制代码分析：研究如何从二进制文件中提取有关程序执行的信息，例如函数调用、控制流等。这可以通过静态分析、动态分析和符号执行等方法实现。</li>
+<li>运行时信息收集：研究如何在不修改目标程序的情况下，收集有关程序执行过程中的运行时信息，例如内存访问、寄存器值等。这可以通过插桩（Instrumentation）技术实现。</li>
+<li>执行跟踪：研究如何记录程序执行过程中的关键事件，例如函数调用、条件分支等。这可以通过插桩、硬件支持或操作系统支持等方式实现。</li>
+<li>执行路径分析：研究如何分析程序执行过程中的所有可能路径，以找出潜在的安全漏洞和异常行为。这可以通过数据流分析、模型检查等方法实现。</li>
+<li>逆向工程工具开发：研究如何开发自动化的逆向工程工具，以帮助研究人员更高效地分析复杂的软件系统。这可以涉及到编译器设计、调试器开发等方面。</li>
+<li>保护机制对抗：研究如何针对执行追踪协议逆向技术进行防御，以提高软件系统的安全性。这可以涉及到加密算法、混淆技术等方面的研究。</li>
+</ol>
 
                 
               </div>
@@ -444,7 +337,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/C%E8%AF%AD%E8%A8%80/" class="print-no-link">#C语言</a>
+        <a href="/tags/Paper/" class="print-no-link">#Paper</a>
       
     </div>
   
@@ -456,8 +349,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>结构体对齐</div>
-      <div>http://example.com/2023/10/11/结构体对齐/</div>
+      <div>Paper</div>
+      <div>http://example.com/2023/11/16/Paper/</div>
     </div>
     <div class="license-meta">
       
@@ -469,7 +362,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 11, 2023</div>
+          <div>November 16, 2023</div>
         </div>
       
       
@@ -501,9 +394,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/09/C-Plus/" title="C Plus">
+                      <a href="/2023/11/17/angr-ctf/" title="angr_ctf">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">C Plus</span>
+                        <span class="hidden-mobile">angr_ctf</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -511,8 +404,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/11/C%E8%AF%AD%E8%A8%80%E5%8F%8D%E6%B1%87%E7%BC%96/" title="C语言反汇编">
-                        <span class="hidden-mobile">C语言反汇编</span>
+                      <a href="/2023/11/15/WSL%E4%BD%BF%E7%94%A8/" title="WSL使用">
+                        <span class="hidden-mobile">WSL使用</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
