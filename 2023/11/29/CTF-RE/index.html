@@ -56,8 +56,14 @@
 <meta property="og:image" content="http://example.com/images/image-20231201092324171.png">
 <meta property="og:image" content="http://example.com/images/image-20231201093625858.png">
 <meta property="og:image" content="http://example.com/images/image-20231201093713047.png">
+<meta property="og:image" content="http://example.com/images/image-20231223163008862.png">
+<meta property="og:image" content="http://example.com/images/image-20231223163056750.png">
+<meta property="og:image" content="http://example.com/images/image-20231223163209845.png">
+<meta property="og:image" content="http://example.com/images/image-20231223163443428.png">
+<meta property="og:image" content="http://example.com/images/image-20231223163716941.png">
+<meta property="og:image" content="http://example.com/2023/11/29/CTF-RE/image-20231223163859644.png">
 <meta property="article:published_time" content="2023-11-29T06:31:38.000Z">
-<meta property="article:modified_time" content="2023-12-07T11:10:35.302Z">
+<meta property="article:modified_time" content="2023-12-23T09:45:40.725Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="CTF_RE">
 <meta name="twitter:card" content="summary_large_image">
@@ -255,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.5k words
+          9.2k words
         
       </span>
     
@@ -266,7 +272,7 @@
         
         
         
-          72 mins
+          77 mins
         
       </span>
     
@@ -448,6 +454,37 @@
 <p>while循环语句：如果b1&#x2F;&#x2F;31!&#x3D;0，则把s_box中对应的b1%31下标的字符给s串。因为有取余运算，所以不能准确知道b1&#x2F;&#x2F;31的商是多少，所以要爆破</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python">s_box = <span class="hljs-string">&#x27;qwertyuiopasdfghjkzxcvb123456#$&#x27;</span><br>s = <span class="hljs-string">&#x27;u#k4ggia61egegzjuqz12jhfspfkay&#x27;</span><br><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">31</span>):<br>    tmp = j<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> s[::-<span class="hljs-number">1</span>]:		<span class="hljs-comment">#倒序遍历s  s_box[i]是余数</span><br>        tmp = s_box.index(i)+tmp*<span class="hljs-number">31</span><br>    tmp = <span class="hljs-built_in">str</span>(<span class="hljs-built_in">bin</span>(tmp)[<span class="hljs-number">2</span>:])<br>    tmp = tmp.zfill((<span class="hljs-built_in">len</span>(tmp)//<span class="hljs-number">8</span>+<span class="hljs-number">1</span>)*<span class="hljs-number">8</span>)<br>    flag = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(tmp),<span class="hljs-number">8</span>):<br>        flag += <span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(tmp[i:i+<span class="hljs-number">8</span>],<span class="hljs-number">2</span>))<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;NSSCTF&#x27;</span> <span class="hljs-keyword">in</span> flag:<br>        <span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
 
+
+
+
+
+<h1 id="密码学-Base编码"><a href="#密码学-Base编码" class="headerlink" title="密码学_Base编码"></a>密码学_Base编码</h1><p>等待更新</p>
+<h1 id="WUSTCTF-2020-level3"><a href="#WUSTCTF-2020-level3" class="headerlink" title="[WUSTCTF 2020]level3"></a>[WUSTCTF 2020]level3</h1><p>1、查克</p>
+<p><img src="/../images/image-20231223163008862.png" srcset="/img/loading.gif" lazyload alt="image-20231223163008862"></p>
+<p>64位无壳</p>
+<p>2、拖到IDA</p>
+<p><img src="/../images/image-20231223163056750.png" srcset="/img/loading.gif" lazyload alt="image-20231223163056750"></p>
+<p>输入部分涉及随机数，不重要，关键在base64_encode()函数</p>
+<p>跟进去</p>
+<p><img src="/../images/image-20231223163209845.png" srcset="/img/loading.gif" lazyload alt="image-20231223163209845"></p>
+<p>发现是正常base64加密</p>
+<p>看下base64_encode看下表有没有被修改</p>
+<p>跟进去发现没有，那把加密后的</p>
+<p>d2G0ZjLwHjS7DmOzZAY0X2lzX3CoZV9zdNOydO9vZl9yZXZlcnGlfD&#x3D;&#x3D;</p>
+<p>解密，发现是一坨屎</p>
+<p><img src="/../images/image-20231223163443428.png" srcset="/img/loading.gif" lazyload alt="image-20231223163443428"></p>
+<p>猜测一下有可能换表了，但是这种操作我也是第一次见，直接看下表的交叉引用</p>
+<p><img src="/../images/image-20231223163716941.png" srcset="/img/loading.gif" lazyload alt="image-20231223163716941"></p>
+<p>发现还有一个函数0_0LookAtYou也使用了表，跟进去</p>
+<p><img src="/2023/11/29/CTF-RE/image-20231223163859644.png" srcset="/img/loading.gif" lazyload alt="image-20231223163859644"></p>
+<p>果然换表操作</p>
+<p>python写个脚本模拟一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">base64 = <span class="hljs-string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span><br>base64 = <span class="hljs-built_in">list</span>(base64)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>    v1 = base64[i]<br>    base64[i] = base64[<span class="hljs-number">19</span> - i]<br>    result = <span class="hljs-number">19</span> - i<br>    base64[result] = v1<br>base64 = <span class="hljs-string">&#x27;&#x27;</span>.join(base64)<br><span class="hljs-built_in">print</span>(base64)<br></code></pre></td></tr></table></figure>
+
+<p>得到新表</p>
+<p>TSRQPONMLKJIHGFEDCBAUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+&#x2F;</p>
+<p>换表后解密得到flag:</p>
+<p>wctf2020{Base64_is_the_start_of_reverse}</p>
 
                 
               </div>
