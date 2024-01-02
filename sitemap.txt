@@ -1,3 +1,4 @@
+http://example.com/2024/01/02/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/
 http://example.com/2023/11/29/CTF-RE/
 http://example.com/2023/11/09/C-Plus/
 http://example.com/2023/10/07/%E6%8C%87%E9%92%88/
@@ -21,3 +22,4 @@ http://example.com/tags/Paper/
 http://example.com/tags/CTF/
 http://example.com/tags/CTF-RE/
 http://example.com/tags/python/
+http://example.com/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E5%A4%8D%E4%B9%A0/
